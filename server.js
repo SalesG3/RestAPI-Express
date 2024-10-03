@@ -1,11 +1,20 @@
 // APP:
 import express from "express";
 import cors from "cors";
+import morgan from "morgan";
 
 const app = express();
 app.use(express.json(), cors({
     origin: "*"
 }));
+
+app.use(morgan('tiny'));
+
+app.get('/1', async (req, res) => {
+    res.send({
+        Testando : "Sucesso!"
+    })
+})
 
 
 // ROUTE:
