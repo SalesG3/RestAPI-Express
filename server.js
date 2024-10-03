@@ -10,10 +10,6 @@ app.use(cors({
 }))
 app.use(express.json())
 
-app.listen(8000, () => {
-    console.log('Servidor Express Live!! http://localhost:8000/')
-})
-
 // Conecta com Banco de Dados
 // DB online via RailWay
 
@@ -24,6 +20,15 @@ const con = mysql.createConnection('mysql://root:otJKDeDzWueXZjjjxsKNYaEcnyUCcFv
 con.connect(function(err){
     if(err) throw err;
     console.log('Banco de Dados conectado!')
+})
+
+// Cria Server 
+const http = require('http');
+
+const server = http.createServer(app);
+
+server.listen(8000, () => {
+    console.log('Servidor Express Live!! http://localhost:8000/')
 })
 
 // Exportar conexões
