@@ -1,36 +1,34 @@
-// APP:
-import express from "express";
-import cors from "cors";
-import morgan from "morgan";
+// Cria servidor utilizando biblioteca Express
+// Cors para permitir requisições
+
+const express = require('express');
+const cors = require('cors');
 
 const app = express();
-app.use(express.json(), cors({
-    origin: "*"
-}));
+app.use(cors({
+    origin: '*'
+}))
+app.use(express.json())
 
-app.use(morgan('tiny'));
-
-app.get('/1', async (req, res) => {
-    res.send({
-        Testando : "Sucesso!"
-    })
+app.listen(8000, () => {
+    console.log('Servidor Express Live!! http://localhost:8000/')
 })
 
+// Conecta com Banco de Dados
+// DB online via RailWay
 
-// ROUTE:
-import { Router } from "express";
+const mysql = require('mysql2');
 
-const route = Router();
+const con = mysql.createConnection('mysql://root:otJKDeDzWueXZjjjxsKNYaEcnyUCcFvE@junction.proxy.rlwy.net:58360/DBmain');
 
-route.get('/', async (req, res) => {
-    res.send({
-        Teste : "Sucesso!"
-    })
+con.connect(function(err){
+    if(err) throw err;
+    console.log('Banco de Dados conectado!')
 })
 
-//SERVER:
-import http from "http";
+// Exportar conexões
 
-const server = http.createServer(app);
-
-server.listen(8000, ( ) => { });
+module.exports = {
+    app: app,
+    con: con
+};
