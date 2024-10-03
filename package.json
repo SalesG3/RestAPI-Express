@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "node index"
+    "build": "node server"
   },
   "keywords": [],
   "author": "",
@@ -11,8 +11,6 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.21.0",
-    "http": "^0.0.1-security",
-    "mysql2": "^3.11.3"
+    "express": "^4.21.0"
   }
 }

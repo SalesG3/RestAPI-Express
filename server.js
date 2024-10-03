@@ -1,46 +1,27 @@
-// Cria servidor utilizando biblioteca Express
-// Cors para permitir requisições
-
-const express = require('express');
-const cors = require('cors');
+// APP:
+import express from "express";
+import cors from "cors";
 
 const app = express();
-app.use(cors({
-    origin: 'http://localhost:4200'
-}))
-app.use(express.json())
+app.use(express.json(), cors({
+    origin: "*"
+}));
 
-// Conecta com Banco de Dados
-// DB online via RailWay
 
-const mysql = require('mysql2');
+// ROUTE:
+import { Router } from "express";
 
-const con = mysql.createConnection('mysql://root:otJKDeDzWueXZjjjxsKNYaEcnyUCcFvE@junction.proxy.rlwy.net:58360/DBmain');
+const route = Router();
 
-con.connect(function(err){
-    if(err) throw err;
-    console.log('Banco de Dados conectado!')
+route.get('/', async (req, res) => {
+    res.send({
+        Teste : "Sucesso!"
+    })
 })
 
-// Cria Server 
-const http = require('http');
+//SERVER:
+import http from "http";
 
 const server = http.createServer(app);
 
-server.listen(8000, () => {
-    console.log('Servidor Express Live!! http://localhost:8000/')
-})
-
-// Exportar conexões
-
-module.exports = {
-    app: app,
-    con: con
-};
-
-// Teste
-app.get('/', async (req, res) => {
-    res.send({
-        teste : "Sucesso"
-    })
-})
+server.listen(8000, ( ) => { });
