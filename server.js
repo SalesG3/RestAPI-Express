@@ -34,6 +34,13 @@ server.listen(8000, () => {
 // Exportar conexões
 
 module.exports = {
-    app: server,
+    app: app,
     con: con
 };
+
+// Teste
+app.get('/', async (req, res) => {
+    res.send({
+        teste : "Sucesso"
+    })
+})
