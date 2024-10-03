@@ -34,6 +34,6 @@ server.listen(8000, () => {
 // Exportar conexões
 
 module.exports = {
-    app: app,
+    app: server,
     con: con
 };
