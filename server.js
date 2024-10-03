@@ -17,7 +17,7 @@ app.listen(8000, () => {
 // Conecta com Banco de Dados
 // DB online via RailWay
 
-const mysql = require('mysql2');
+/*const mysql = require('mysql2');
 
 const con = mysql.createConnection('mysql://root:otJKDeDzWueXZjjjxsKNYaEcnyUCcFvE@junction.proxy.rlwy.net:58360/DBmain');
 
@@ -31,4 +31,4 @@ con.connect(function(err){
 module.exports = {
     app: app,
     con: con
-};
+};*/
